@@ -1,10 +1,22 @@
 /* ---------------- General ---------------- */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Arial',sans-serif;
+}
+
 body{
-  background: linear-gradient(135deg,#0b0b0b,#101010);
+  background: linear-gradient(135deg,#050505,#0b0b0b,#101010);
   color:#e0e0e0;
   overflow:hidden;
   position:relative;
+}
+
+/* 🔥 Dual Neon Glow Variables */
+:root{
+  --cyan:#00ffff;
+  --red:#ff003c;
 }
 
 /* ---------------- Particles Background ---------------- */
@@ -17,114 +29,341 @@ body{
 }
 
 /* ---------------- Container ---------------- */
-#container{width:100vw;height:100vh;position:relative;}
+#container{
+  width:100vw;
+  height:100vh;
+  position:relative;
+}
+
+/* ---------------- Pages ---------------- */
 .page{
-  width:100vw;height:100vh;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  position:absolute;top:0;left:0;
-  opacity:0;transform:scale(0.9);
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  top:0;left:0;
+  opacity:0;
+  transform:scale(0.9);
   transition:all 0.8s ease;
 }
-.page.active{opacity:1;transform:scale(1);z-index:10;}
 
-/* ---------------- Glowing Name ---------------- */
+.page.active{
+  opacity:1;
+  transform:scale(1);
+  z-index:10;
+}
+
+/* ---------------- Glow Name (UPGRADED 🔥) ---------------- */
 .glow-name{
-  font-size:3em;color:#00ffff;
-  text-shadow:0 0 15px #00ffff,0 0 30px #00ffff,0 0 60px #00ffff;
-  animation: glow 2s infinite alternate;
+  font-size:3em;
+  color:var(--cyan);
+  text-shadow:
+    0 0 10px var(--cyan),
+    0 0 20px var(--cyan),
+    0 0 40px var(--cyan),
+    0 0 60px var(--red);
+  animation: glowMix 2s infinite alternate;
 }
-@keyframes glow{from{text-shadow:0 0 15px #00ffff,0 0 30px #00ffff;}to{text-shadow:0 0 25px #00ffff,0 0 50px #00ffff;}}
 
-/* ---------------- Buttons ---------------- */
-button{
-  cursor:pointer;padding:10px 20px;margin-top:20px;
-  border:none;border-radius:10px;
-  background:#00ffff;color:#000;font-weight:bold;
-  transition:0.3s;
+@keyframes glowMix{
+  from{
+    text-shadow:
+      0 0 10px var(--cyan),
+      0 0 25px var(--cyan),
+      0 0 40px var(--cyan);
+  }
+  to{
+    text-shadow:
+      0 0 20px var(--cyan),
+      0 0 40px var(--red),
+      0 0 70px var(--red);
+  }
 }
-button:hover{background:#00bfff;box-shadow:0 0 20px #00ffff;transform:scale(1.1);}
+
+/* ---------------- Buttons (UPGRADED) ---------------- */
+button{
+  cursor:pointer;
+  padding:12px 25px;
+  margin-top:20px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(45deg,var(--cyan),var(--red));
+  color:#000;
+  font-weight:bold;
+  transition:0.3s;
+  box-shadow:0 0 10px var(--cyan);
+}
+
+button:hover{
+  transform:scale(1.1);
+  box-shadow:
+    0 0 15px var(--cyan),
+    0 0 30px var(--red),
+    0 0 50px var(--red);
+}
 
 /* ---------------- Hobbies ---------------- */
 .hobby{
-  padding:15px 25px;margin:10px;background:#111;
-  border-radius:15px;text-align:center;
-  transition:0.3s;color:#00ffff;cursor:pointer;
+  padding:15px 25px;
+  margin:10px;
+  background:#111;
+  border-radius:15px;
+  text-align:center;
+  transition:0.3s;
+  color:var(--cyan);
+  cursor:pointer;
+  border:1px solid var(--cyan);
 }
-.hobby:hover{transform:scale(1.1);box-shadow:0 0 25px #00ffff;}
 
-/* Hobby Animation Container */
+.hobby:hover{
+  transform:scale(1.1);
+  box-shadow:
+    0 0 20px var(--cyan),
+    0 0 40px var(--red);
+  border-color:var(--red);
+}
+
+/* ---------------- Hobby Animation ---------------- */
 #hobby-animation{
-  position:absolute;top:50%;left:50%;
+  position:absolute;
+  top:50%;
+  left:50%;
   transform:translate(-50%,-50%);
   pointer-events:none;
 }
 
 /* ---------------- WIG ---------------- */
 .wig-box{
-  background:#111;padding:15px;margin:10px;border-radius:15px;
-  box-shadow:0 0 20px #00ffff;text-align:center;
-  transition:0.3s;
-}
-.wig-box:hover{transform:scale(1.02);box-shadow:0 0 35px #00ffff;}
-
-/* ---------------- Book / Poetry ---------------- */
-.book-desc,.poetry-box{
-  max-width:600px;text-align:center;
-  padding:15px;margin-top:20px;
-  line-height:1.5;color:#ccc;
+  background:#111;
+  padding:15px;
+  margin:10px;
   border-radius:15px;
-  box-shadow:0 0 15px #00ffff;
-  background:rgba(0,255,255,0.02);
+  text-align:center;
+  transition:0.3s;
+  border:1px solid var(--cyan);
+  box-shadow:0 0 15px var(--cyan);
 }
-.poetry-box{border:2px dashed #00ffff;}
+
+.wig-box:hover{
+  transform:scale(1.05);
+  box-shadow:
+    0 0 25px var(--cyan),
+    0 0 40px var(--red);
+}
+
+/* ---------------- Poetry ---------------- */
+.poetry-box{
+  max-width:600px;
+  text-align:center;
+  padding:15px;
+  margin-top:20px;
+  line-height:1.6;
+  color:#ccc;
+  border-radius:15px;
+  border:2px dashed var(--cyan);
+  background:rgba(0,255,255,0.02);
+  box-shadow:0 0 20px var(--cyan);
+}
 
 /* ---------------- Thank You ---------------- */
 .glow-thanks{
-  font-size:3em;color:#00ffff;
-  text-shadow:0 0 20px #00ffff,0 0 40px #00ffff;
+  font-size:3em;
+  color:var(--red);
+  text-shadow:
+    0 0 15px var(--red),
+    0 0 30px var(--red),
+    0 0 60px var(--cyan);
 }
 
-/* ---------------- Bullets & Creeper Explosion ---------------- */
-.bullet{width:5px;height:15px;background:gold;position:absolute;border-radius:2px;}
-@keyframes bulletAnim{0%{right:0;}100%{right:100%;}}
-.explode-part{width:8px;height:8px;background:lime;position:absolute;border-radius:50%;}
-@keyframes explode{0%{transform:translate(0,0);opacity:1;}100%{transform:translate(calc(-50px + 100px*var(--x)),calc(-50px + 100px*var(--y)));opacity:0;}}
+/* ---------------- Gallery ---------------- */
+.gallery{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:20px;
+}
 
-/* ---------------- My Self Section ---------------- */
-#myself{overflow-y:auto;padding:20px;}
+.gallery img{
+  width:200px;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px;
+  border:2px solid var(--cyan);
+  transition:0.4s;
+}
+
+.gallery img:hover{
+  transform:scale(1.1) rotate(2deg);
+  box-shadow:
+    0 0 20px var(--cyan),
+    0 0 40px var(--red),
+    0 0 60px var(--red);
+}
+
+/* ---------------- My Self ---------------- */
+#myself{
+  overflow-y:auto;
+  padding:20px;
+}
+
 .self-box{
-  background:#111;padding:15px 20px;margin:10px 0;border-radius:12px;
-  box-shadow:0 0 15px #00ffff;max-width:700px;width:90%;
-  text-align:left;color:#e0e0e0;transition:0.3s;
+  background:#111;
+  padding:15px 20px;
+  margin:10px 0;
+  border-radius:12px;
+  max-width:700px;
+  width:90%;
+  text-align:left;
+  transition:0.3s;
+  border:1px solid var(--cyan);
 }
-.self-box h3{color:#00ffff;margin-bottom:8px;}
-.self-box p{color:#ccc;line-height:1.5;}
-.self-box:hover{transform:scale(1.02);box-shadow:0 0 25px #00ffff;}
 
-/* Custom scrollbar */
-#myself::-webkit-scrollbar{width:8px;}
-#myself::-webkit-scrollbar-track{background:#111;border-radius:10px;}
-#myself::-webkit-scrollbar-thumb{background:#00ffff;border-radius:10px;}
+.self-box h3{
+  color:var(--cyan);
+  margin-bottom:8px;
+}
+
+.self-box p{
+  color:#ccc;
+}
+
+.self-box:hover{
+  transform:scale(1.03);
+  box-shadow:
+    0 0 20px var(--cyan),
+    0 0 40px var(--red);
+}
+
+/* ---------------- Bullets ---------------- */
+.bullet{
+  width:5px;
+  height:15px;
+  background:gold;
+  position:absolute;
+  border-radius:2px;
+}
+
+@keyframes bulletAnim{
+  0%{right:0;}
+  100%{right:100%;}
+}
+
+/* ---------------- Explosion ---------------- */
+.explode-part{
+  width:8px;
+  height:8px;
+  background:lime;
+  position:absolute;
+  border-radius:50%;
+}
+
+@keyframes explode{
+  0%{transform:translate(0,0);opacity:1;}
+  100%{
+    transform:translate(calc(-50px + 100px*var(--x)),calc(-50px + 100px*var(--y)));
+    opacity:0;
+  }
+}
 
 /* ---------------- Car Transition ---------------- */
 .car-transition{
   position:fixed;
-  top:50%;left:-200px;
-  width:200px;transform:translateY(-50%);
-  z-index:999;transition:left 1.2s ease-in-out;
+  top:50%;
+  left:-200px;
+  width:200px;
+  transform:translateY(-50%);
+  z-index:999;
+  transition:left 1.2s ease-in-out;
 }
-.car-transition.active{left:110%;}
 
-/* ---------------- Gallery Images ---------------- */
-.gallery{
-  display:flex;justify-content:center;flex-wrap:wrap;gap:20px;
+.car-transition.active{
+  left:110%;
 }
-.gallery img{
-  width:200px;height:200px;object-fit:cover;
-  border:2px solid #00ffff;border-radius:10px;
-  transition:all 0.4s ease;
+
+/* ---------------- Scrollbar ---------------- */
+#myself::-webkit-scrollbar{width:8px;}
+#myself::-webkit-scrollbar-track{background:#111;}
+#myself::-webkit-scrollbar-thumb{
+  background:linear-gradient(var(--cyan),var(--red));
+  border-radius:10px;
 }
-.gallery img:hover{
-  transform:scale(1.1) rotate(2deg);
-  box-shadow:0 0 20px #00ffff,0 0 40px #00ffff;
+
+/* ---------------- Cursor ---------------- */
+#cursor{
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  background:var(--cyan);
+  position:fixed;
+  pointer-events:none;
+  box-shadow:
+    0 0 10px var(--cyan),
+    0 0 20px var(--red);
+}/* 📱 Easy Reach Buttons (Front / Thumb Area) */
+.next-btn, .back-btn{
+  position:fixed;
+  bottom:30%;
+  z-index:100;
+  padding:14px 20px;
+}
+
+/* Right side (Next) */
+.next-btn{
+  right:10px;
+}
+
+/* Left side (Back) */
+.back-btn{
+  left:10px;
+}
+
+/* for mobile */
+@media (max-width:768px){
+  .next-btn, .back-btn{
+    bottom:35%;
+    transform:scale(1.1);
+  }
+}
+/* 📸 Image Fullscreen Viewer */
+#image-viewer{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+  opacity:0;
+  pointer-events:none;
+  transition:0.4s;
+}
+
+/* Active state */
+#image-viewer.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* Image style */
+#image-viewer img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:15px;
+  box-shadow:
+    0 0 20px #00ffff,
+    0 0 40px #00ffff,
+    0 0 80px #ff003c;
+  transform:scale(0.8);
+  transition:0.4s;
+}
+
+/* Zoom effect */
+#image-viewer.active img{
+  transform:scale(1);
 }
