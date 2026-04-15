@@ -182,7 +182,7 @@ document.querySelectorAll('.gallery img').forEach(img => {
 viewer.addEventListener('click', () => {
   viewer.classList.remove('active');
 });
-/* 🔥 Hide Loader After Load */
+/*  Hide Loader After Load */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
 
@@ -194,5 +194,5 @@ window.addEventListener("load", () => {
       loader.style.display = "none";
     },500);
 
-  }, 1000); // 1 sec baad hide
+  }, 1000);
 });
