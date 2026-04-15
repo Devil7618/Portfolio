@@ -182,17 +182,4 @@ document.querySelectorAll('.gallery img').forEach(img => {
 viewer.addEventListener('click', () => {
   viewer.classList.remove('active');
 });
-/*  Hide Loader After Load */
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
 
-  setTimeout(()=>{
-    loader.style.opacity = "0";
-    loader.style.transition = "0.5s";
-    
-    setTimeout(()=>{
-      loader.style.display = "none";
-    },500);
-
-  }, 1000);
-});
